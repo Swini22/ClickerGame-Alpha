@@ -8,6 +8,8 @@
 # Java class files
 *.class
 
+
+
 # Generated files
 bin/
 gen/
@@ -25,3 +27,12 @@ proguard/
 
 # Log Files
 *.log
+
+
+
+
+# xml files
+*.xml
+
+# iml files
+*.iml
