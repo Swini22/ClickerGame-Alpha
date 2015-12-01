@@ -1,6 +1,6 @@
 package actor.item;
 
-public class Armor extends Item {
+public class Armor extends Equipment {
 
 	public enum ArmorType {
 		BODY, HEAD, ARM, LEG, FOOT

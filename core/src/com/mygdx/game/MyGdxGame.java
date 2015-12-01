@@ -9,17 +9,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import view.BattleScreen;
+import view.SplashScreen;
 
 public class MyGdxGame extends Game {
 
-	public BattleScreen battleScreen;
+	public SplashScreen splashScreen;
 
 	private OrthographicCamera camera;
 
 	@Override
 	public void create() {
-
-		battleScreen = new BattleScreen(this);
-		setScreen(battleScreen);
+		splashScreen = new SplashScreen(this);
+		setScreen(splashScreen);
 	}
 }

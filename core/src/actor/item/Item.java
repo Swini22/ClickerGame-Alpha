@@ -2,7 +2,7 @@ package actor.item;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class Item {
+public class Item implements Usable{
 
 	Texture texture;
 
@@ -10,4 +10,8 @@ public class Item {
 
 	}
 
+	@Override
+	public void use() {
+
+	}
 }

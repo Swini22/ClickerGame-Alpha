@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mygdx.game.MyGdxGame;
 
 public class BattleRenderer {
@@ -21,6 +22,8 @@ public class BattleRenderer {
 	MyGdxGame game;
 
 	private OrthographicCamera cam;
+
+	private Stage stage;
 
 	private Enemy enemy;
 
@@ -71,17 +74,13 @@ public class BattleRenderer {
 
 		attackCooldown = attackCooldown - delta;
 
-		cam.update();
-
-		/*
-		 * Creates a new Enemy if the current one doesn't have any lifepoints
-		 * left
-		 */
 		if (enemy.getLifePoints() <= 0) {
 
 			createNewEnemy();
 
 		}
+
+		cam.update();
 
 		batch.setProjectionMatrix(cam.combined);
 		Gdx.gl.glClearColor(0, 1, 0, 1);
@@ -97,7 +96,7 @@ public class BattleRenderer {
 
 	public void createNewEnemy() {
 
-		enemy = new Enemy(10000);
+		enemy = EnemyHandler.createNewEnemy();
 		enemyTexture = new Texture("bear.png");
 
 	}
