@@ -5,14 +5,24 @@ import actor.Enemy;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.MyGdxGame;
+
+import java.util.ArrayList;
+
+import javax.swing.ScrollPaneLayout;
 
 public class BattleRenderer {
 
@@ -34,13 +44,14 @@ public class BattleRenderer {
 	private Rectangle enemyRectangle;
 
 	BitmapFont font;
+	Skin skin;
 
 	float attackCooldown;
 
 	public BattleRenderer(MyGdxGame game) {
 
-		UserInputProcessor inputProcessor = new UserInputProcessor();
-		Gdx.input.setInputProcessor(inputProcessor);
+		stage = new Stage();
+		Gdx.input.setInputProcessor(stage);
 		this.game = game;
 		batch = new SpriteBatch();
 
@@ -51,6 +62,11 @@ public class BattleRenderer {
 		cam.update();
 
 		font = new BitmapFont();
+
+		createBasicSkin();
+		TextButton mainMenuButton = new TextButton("New game", skin); // Use the initialized skin
+		mainMenuButton.setPosition(0, Gdx.graphics.getHeight());
+		stage.addActor(mainMenuButton);
 
 		initBattleScreen();
 
@@ -92,6 +108,38 @@ public class BattleRenderer {
 
 		font.draw(batch, Float.toString(enemy.getLifePoints()), 100, 100);
 		batch.end();
+
+		stage.act();
+		stage.draw();
+	}
+
+	private void createBasicSkin(){
+		//Create a font
+		BitmapFont font = new BitmapFont();
+		skin = new Skin();
+		skin.add("default", font);
+
+		//Create a texture
+		Pixmap pixmap = new Pixmap((int)Gdx.graphics.getWidth()/4,(int)Gdx.graphics.getHeight()/10, Pixmap.Format.RGB888);
+		pixmap.setColor(Color.WHITE);
+		pixmap.fill();
+		skin.add("background", new Texture(pixmap));
+
+		//Create a button style
+		TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
+		textButtonStyle.up = skin.newDrawable("background", Color.GRAY);
+		textButtonStyle.down = skin.newDrawable("background", Color.DARK_GRAY);
+		textButtonStyle.checked = skin.newDrawable("background", Color.DARK_GRAY);
+		textButtonStyle.over = skin.newDrawable("background", Color.LIGHT_GRAY);
+		textButtonStyle.font = skin.getFont("default");
+		skin.add("default", textButtonStyle);
+
+		SelectBox.SelectBoxStyle selectBoxStyleStyle = new SelectBox.SelectBoxStyle();
+		selectBoxStyleStyle.font = skin.getFont("default");
+		selectBoxStyleStyle.background = skin.newDrawable("background", Color.BLACK);
+		selectBoxStyleStyle.scrollStyle = new ScrollPane.ScrollPaneStyle();
+		skin.add("default", selectBoxStyleStyle);
+
 	}
 
 	public void createNewEnemy() {
