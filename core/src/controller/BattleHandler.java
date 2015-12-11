@@ -12,4 +12,11 @@ public final class BattleHandler {
         return 0;
     }
 
+    public static void calcEnemyDeathReward(Player player, Enemy enemy){
+
+        player.setGold(player.getGold() + 1000);
+        player.setExp(player.getExp() + 500);
+
+    }
+
 }

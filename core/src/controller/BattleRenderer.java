@@ -1,9 +1,11 @@
 package controller;
 
 import actor.Enemy;
+import actor.Player;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,20 +16,20 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.game.MyGdxGame;
 
-import java.util.ArrayList;
-
-import javax.swing.ScrollPaneLayout;
+import java.awt.event.InputEvent;
 
 public class BattleRenderer {
 
-	public static final float ENEMY_HEIGHT = 300;
-	public static final float ENEMY_WIDTH = 300;
+	public static final float ENEMY_HEIGHT = 600;
+	public static final float ENEMY_WIDTH = 600;
 
 	MyGdxGame game;
 
@@ -36,65 +38,122 @@ public class BattleRenderer {
 	private Stage stage;
 
 	private Enemy enemy;
+    private Player player;
 
 	private SpriteBatch batch;
 	private Texture enemyTexture;
 	private Texture background;
 
 	private Rectangle enemyRectangle;
+    private boolean enemyMovesUp;
+    private float enemyAnimationTimeSpent = 0;
+
+	TextButton inventoryMenuButton, heroMenuButton, resetMenuButton, optionsMenuButton, exitMenuButton;
 
 	BitmapFont font;
 	Skin skin;
 
-	float attackCooldown;
-
 	public BattleRenderer(MyGdxGame game) {
 
+        player = new Player();
+        player.setGold(0);
+        player.setExp(0);
+        player.setName("Mik");
+
 		stage = new Stage();
-		Gdx.input.setInputProcessor(stage);
+
+        //Input Processors
+        InputProcessor userInput = new UserInputProcessor();
+        InputMultiplexer inputMultiplexer = new InputMultiplexer();
+        inputMultiplexer.addProcessor(stage);
+        inputMultiplexer.addProcessor(userInput);
+        Gdx.input.setInputProcessor(inputMultiplexer);
+
 		this.game = game;
+
 		batch = new SpriteBatch();
 
 		cam = new OrthographicCamera(Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight());
 		cam.position.set(Gdx.graphics.getWidth() / 2,
-				Gdx.graphics.getHeight() / 2, 0);
+                Gdx.graphics.getHeight() / 2, 0);
 		cam.update();
 
-		font = new BitmapFont();
+        font = new BitmapFont();
 
-		createBasicSkin();
-		TextButton mainMenuButton = new TextButton("New game", skin); // Use the initialized skin
-		mainMenuButton.setPosition(0, Gdx.graphics.getHeight());
-		stage.addActor(mainMenuButton);
+        createBasicSkin();
+        createMenu();
 
-		initBattleScreen();
+        initBattleScreen();
+
+        enemyMovesUp = true;
 
 	}
 
+    private void createMenu(){
+        //Menu
+        heroMenuButton = new TextButton("Hero", skin); // Use the initialized skin
+        heroMenuButton.setSize(300, 200);
+        heroMenuButton.setPosition(0, Gdx.graphics.getHeight() - heroMenuButton.getHeight());
+        heroMenuButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                //TODO open Hero Menu
+            }
+        });
+        stage.addActor(heroMenuButton);
+
+        inventoryMenuButton = new TextButton("Inventory", skin); // Use the initialized skin
+        inventoryMenuButton.setSize(300, 200);
+        inventoryMenuButton.setPosition(0, Gdx.graphics.getHeight() - inventoryMenuButton.getHeight() * 2);
+        inventoryMenuButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                //TODO open Hero Menu
+            }
+        });
+        stage.addActor(inventoryMenuButton);
+
+        resetMenuButton = new TextButton("Reset", skin); // Use the initialized skin
+        resetMenuButton.setSize(300, 200);
+        resetMenuButton.setPosition(0, Gdx.graphics.getHeight() - resetMenuButton.getHeight() * 3);
+        resetMenuButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                //TODO open Hero Menu
+            }
+        });
+        stage.addActor(resetMenuButton);
+
+        optionsMenuButton = new TextButton("Options", skin); // Use the initialized skin
+        optionsMenuButton.setSize(300, 200);
+        optionsMenuButton.setPosition(0, Gdx.graphics.getHeight() - optionsMenuButton.getHeight() * 4);
+        optionsMenuButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                //TODO open Hero Menu
+            }
+        });
+        stage.addActor(optionsMenuButton);
+
+        exitMenuButton = new TextButton("Exit", skin); // Use the initialized skin
+        exitMenuButton.setSize(300, 200);
+        exitMenuButton.setPosition(0, Gdx.graphics.getHeight() - exitMenuButton.getHeight() * 5);
+        exitMenuButton.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                //TODO open Hero Menu
+            }
+        });
+        stage.addActor(exitMenuButton);
+    }
+
 	public void initBattleScreen() {
 
-		background = new Texture("background.jpg");
+		background = new Texture("bg_forest.jpg");
 
 		createNewEnemy();
-
-		enemyRectangle = new Rectangle();
-		enemyRectangle.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
-		enemyRectangle.setPosition(
-				Gdx.graphics.getWidth() / 2 - enemyRectangle.getWidth() / 2,
-				Gdx.graphics.getHeight() / 2 - enemyRectangle.getHeight() / 2);
 
 	}
 
 	public void render(float delta) {
 
-		attackCooldown = attackCooldown - delta;
-
-		if (enemy.getLifePoints() <= 0) {
-
-			createNewEnemy();
-
-		}
+        updateEnemy(delta);
 
 		cam.update();
 
@@ -102,7 +161,7 @@ public class BattleRenderer {
 		Gdx.gl.glClearColor(0, 1, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		batch.draw(background, 0, 0);
+		batch.draw(background, 0, 0, Gdx.graphics.getHeight(),  Gdx.graphics.getWidth());
 		batch.draw(enemyTexture, enemyRectangle.getX(), enemyRectangle.getY(),
 				enemyRectangle.getWidth(), enemyRectangle.getHeight());
 
@@ -112,6 +171,46 @@ public class BattleRenderer {
 		stage.act();
 		stage.draw();
 	}
+
+    private void updateEnemy(float delta){
+
+        updateEnemyPosition(delta);
+
+        if (enemy.getLifePoints() <= 0) {
+
+            onEnemyDeath();
+
+        }
+    }
+
+    private void onEnemyDeath(){
+
+        BattleHandler.calcEnemyDeathReward(player, enemy);
+
+        createNewEnemy();
+
+    }
+
+    private void updateEnemyPosition(float delta){
+
+        enemyAnimationTimeSpent += delta;
+
+        if(enemyAnimationTimeSpent > 2){
+            if(enemyMovesUp){
+                enemyMovesUp = false;
+            } else {
+                enemyMovesUp = true;
+            }
+            enemyAnimationTimeSpent = 0;
+        }
+
+        if(enemyMovesUp){
+            enemyRectangle.setY(enemyRectangle.getY() + delta * 30);
+        } else {
+            enemyRectangle.setY(enemyRectangle.getY() - delta * 30);
+        }
+
+    }
 
 	private void createBasicSkin(){
 		//Create a font
@@ -146,6 +245,12 @@ public class BattleRenderer {
 
 		enemy = EnemyHandler.createNewEnemy();
 		enemyTexture = new Texture("bear.png");
+
+        enemyRectangle = new Rectangle();
+        enemyRectangle.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
+        enemyRectangle.setPosition(
+                Gdx.graphics.getWidth() / 2 - enemyRectangle.getWidth() / 2,
+                Gdx.graphics.getHeight() / 2 - enemyRectangle.getHeight() / 2);
 
 	}
 
