@@ -47,18 +47,16 @@ public class BattleRenderer {
 	private Rectangle enemyRectangle;
     private boolean enemyMovesUp;
     private float enemyAnimationTimeSpent = 0;
+    private float dbUpdateTime = 0;
 
-	TextButton inventoryMenuButton, heroMenuButton, resetMenuButton, optionsMenuButton, exitMenuButton;
+	TextButton inventoryMenuButton, heroMenuButton, resetMenuButton, optionsMenuButton;
 
 	BitmapFont font;
 	Skin skin;
 
 	public BattleRenderer(MyGdxGame game) {
 
-        player = new Player();
-        player.setGold(0);
-        player.setExp(0);
-        player.setName("Mik");
+        player = new Player("Mik", 0 ,0);
 
 		stage = new Stage();
 
@@ -106,41 +104,32 @@ public class BattleRenderer {
         inventoryMenuButton.setSize(300, 200);
         inventoryMenuButton.setPosition(0, Gdx.graphics.getHeight() - inventoryMenuButton.getHeight() * 2);
         inventoryMenuButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                //TODO open Hero Menu
-            }
-        });
+			public void clicked(InputEvent event, float x, float y) {
+				//TODO open Hero Menu
+			}
+		});
         stage.addActor(inventoryMenuButton);
 
         resetMenuButton = new TextButton("Reset", skin); // Use the initialized skin
         resetMenuButton.setSize(300, 200);
         resetMenuButton.setPosition(0, Gdx.graphics.getHeight() - resetMenuButton.getHeight() * 3);
         resetMenuButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                //TODO open Hero Menu
-            }
-        });
+			public void clicked(InputEvent event, float x, float y) {
+				//TODO open Hero Menu
+			}
+		});
         stage.addActor(resetMenuButton);
 
         optionsMenuButton = new TextButton("Options", skin); // Use the initialized skin
         optionsMenuButton.setSize(300, 200);
         optionsMenuButton.setPosition(0, Gdx.graphics.getHeight() - optionsMenuButton.getHeight() * 4);
         optionsMenuButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                //TODO open Hero Menu
-            }
-        });
+			public void clicked(InputEvent event, float x, float y) {
+				//TODO open Hero Menu
+			}
+		});
         stage.addActor(optionsMenuButton);
 
-        exitMenuButton = new TextButton("Exit", skin); // Use the initialized skin
-        exitMenuButton.setSize(300, 200);
-        exitMenuButton.setPosition(0, Gdx.graphics.getHeight() - exitMenuButton.getHeight() * 5);
-        exitMenuButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                //TODO open Hero Menu
-            }
-        });
-        stage.addActor(exitMenuButton);
     }
 
 	public void initBattleScreen() {
@@ -183,6 +172,27 @@ public class BattleRenderer {
         }
     }
 
+	private void updateEnemyPosition(float delta){
+
+		enemyAnimationTimeSpent += delta;
+
+		if(enemyAnimationTimeSpent > 2){
+			if(enemyMovesUp){
+				enemyMovesUp = false;
+			} else {
+				enemyMovesUp = true;
+			}
+			enemyAnimationTimeSpent = 0;
+		}
+
+		if(enemyMovesUp){
+			enemyRectangle.setY(enemyRectangle.getY() + delta * 30);
+		} else {
+			enemyRectangle.setY(enemyRectangle.getY() - delta * 30);
+		}
+
+	}
+
     private void onEnemyDeath(){
 
         BattleHandler.calcEnemyDeathReward(player, enemy);
@@ -191,60 +201,10 @@ public class BattleRenderer {
 
     }
 
-    private void updateEnemyPosition(float delta){
-
-        enemyAnimationTimeSpent += delta;
-
-        if(enemyAnimationTimeSpent > 2){
-            if(enemyMovesUp){
-                enemyMovesUp = false;
-            } else {
-                enemyMovesUp = true;
-            }
-            enemyAnimationTimeSpent = 0;
-        }
-
-        if(enemyMovesUp){
-            enemyRectangle.setY(enemyRectangle.getY() + delta * 30);
-        } else {
-            enemyRectangle.setY(enemyRectangle.getY() - delta * 30);
-        }
-
-    }
-
-	private void createBasicSkin(){
-		//Create a font
-		BitmapFont font = new BitmapFont();
-		skin = new Skin();
-		skin.add("default", font);
-
-		//Create a texture
-		Pixmap pixmap = new Pixmap((int)Gdx.graphics.getWidth()/4,(int)Gdx.graphics.getHeight()/10, Pixmap.Format.RGB888);
-		pixmap.setColor(Color.WHITE);
-		pixmap.fill();
-		skin.add("background", new Texture(pixmap));
-
-		//Create a button style
-		TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
-		textButtonStyle.up = skin.newDrawable("background", Color.GRAY);
-		textButtonStyle.down = skin.newDrawable("background", Color.DARK_GRAY);
-		textButtonStyle.checked = skin.newDrawable("background", Color.DARK_GRAY);
-		textButtonStyle.over = skin.newDrawable("background", Color.LIGHT_GRAY);
-		textButtonStyle.font = skin.getFont("default");
-		skin.add("default", textButtonStyle);
-
-		SelectBox.SelectBoxStyle selectBoxStyleStyle = new SelectBox.SelectBoxStyle();
-		selectBoxStyleStyle.font = skin.getFont("default");
-		selectBoxStyleStyle.background = skin.newDrawable("background", Color.BLACK);
-		selectBoxStyleStyle.scrollStyle = new ScrollPane.ScrollPaneStyle();
-		skin.add("default", selectBoxStyleStyle);
-
-	}
-
 	public void createNewEnemy() {
 
-		enemy = EnemyHandler.createNewEnemy();
-		enemyTexture = new Texture("bear.png");
+        enemy = EnemyHandler.createNewEnemy();
+        enemyTexture = EnemyHandler.createNewEnemyTexture();
 
         enemyRectangle = new Rectangle();
         enemyRectangle.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
@@ -323,4 +283,33 @@ public class BattleRenderer {
 			return false;
 		}
 	}
+
+    private void createBasicSkin(){
+        //Create a font
+        BitmapFont font = new BitmapFont();
+        skin = new Skin();
+        skin.add("default", font);
+
+        //Create a texture
+        Pixmap pixmap = new Pixmap((int)Gdx.graphics.getWidth()/4,(int)Gdx.graphics.getHeight()/10, Pixmap.Format.RGB888);
+        pixmap.setColor(Color.WHITE);
+        pixmap.fill();
+        skin.add("background", new Texture(pixmap));
+
+        //Create a button style
+        TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
+        textButtonStyle.up = skin.newDrawable("background", Color.GRAY);
+        textButtonStyle.down = skin.newDrawable("background", Color.DARK_GRAY);
+        textButtonStyle.checked = skin.newDrawable("background", Color.DARK_GRAY);
+        textButtonStyle.over = skin.newDrawable("background", Color.LIGHT_GRAY);
+        textButtonStyle.font = skin.getFont("default");
+        skin.add("default", textButtonStyle);
+
+        SelectBox.SelectBoxStyle selectBoxStyleStyle = new SelectBox.SelectBoxStyle();
+        selectBoxStyleStyle.font = skin.getFont("default");
+        selectBoxStyleStyle.background = skin.newDrawable("background", Color.BLACK);
+        selectBoxStyleStyle.scrollStyle = new ScrollPane.ScrollPaneStyle();
+        skin.add("default", selectBoxStyleStyle);
+
+    }
 }

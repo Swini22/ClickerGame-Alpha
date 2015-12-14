@@ -1,5 +1,7 @@
 package controller;
 
+import com.badlogic.gdx.graphics.Texture;
+
 import actor.Enemy;
 
 /**
@@ -9,8 +11,13 @@ public final class EnemyHandler {
 
     public static Enemy createNewEnemy(){
 
-        Enemy enemy = new Enemy(10000);
-        return enemy;
+        return new Enemy("EnemyName", 10000);
+
+    }
+
+    public static Texture createNewEnemyTexture(){
+
+        return new Texture("bear.png");
 
     }
 
@@ -18,16 +25,12 @@ public final class EnemyHandler {
         enemy.setLifePoints(enemy.getLifePoints() - 5000);
     }
 
-    public static double calculateDamage(double damage, Enemy enemy){
-        return 0;
-    }
-
     public static double calculateWinExp(){
-        return 0;
+        return 1000;
     }
 
     public static double calculateWinMoney(){
-        return 0;
+        return 500;
     }
 
 }

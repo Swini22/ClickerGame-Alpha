@@ -2,8 +2,8 @@ package actor;
 
 public class Ally extends Actor {
 
-	public Ally(float lifePoints) {
-		super(lifePoints);
+	public Ally(String name, float lifePoints) {
+		super(name, lifePoints);
 	}
 
 }

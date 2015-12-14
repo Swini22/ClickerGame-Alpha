@@ -26,12 +26,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // SQL statement to create book table
-        String CREATE_BOOK_TABLE = "CREATE TABLE player ( " +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "name TEXT )";
+        String CREATE_PLAYER_TABLE = "CREATE TABLE player ( " +
+                "name TEXT " +
+                "gold REAL" +
+                "exp REAL)";
 
-        // create books table
-        db.execSQL(CREATE_BOOK_TABLE);
+        db.execSQL(CREATE_PLAYER_TABLE);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
-    public void addProduct(Player player) {
+    public void setPlayer(Player player) {
 
         ContentValues values = new ContentValues();
         values.put("name", player.getName());
@@ -54,19 +54,20 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Player findPlayer(String playername) {
-        String query = "Select * FROM player WHERE name =  \"" + playername + "\"";
+    public Player getPlayer() {
+        String query = "Select * FROM player";
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery(query, null);
 
-        Player player = new Player();
+        Player player = new Player("", 0, 0);
 
         if (cursor.moveToFirst()) {
             cursor.moveToFirst();
-            player.setId(Integer.parseInt(cursor.getString(0)));
-            player.setName(cursor.getString(1));
+            player.setName(cursor.getString(0));
+            player.setGold(cursor.getDouble(1));
+            player.setExp(cursor.getDouble(2));
             cursor.close();
         } else {
             player = null;

@@ -7,83 +7,76 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Actor {
 
-	private Texture texture;
+    private String name;
+    private float lifePoints;
 
-	private Weapon weapon;
-	private Armor headArmor;
-	private Armor bodyArmor;
-	private Armor armArmor;
-	private Armor legArmor;
-	private Armor footArmor;
+    private Weapon weapon;
+    private Armor headArmor;
+    private Armor bodyArmor;
+    private Armor armArmor;
+    private Armor legArmor;
+    private Armor footArmor;
 
-	private float lifePoints;
+    public String getName() { return name; }
 
-	public Actor(float lifePoints) {
-		this.lifePoints = lifePoints;
-	}
+    public void setName(String name) { this.name = name; }
 
-	public Texture getTexture() {
-		return texture;
-	}
+    public Actor(String name, float lifePoints) {
+        this.name = name;
+        this.lifePoints = lifePoints; }
 
-	public void setTexture(Texture texture) {
-		this.texture = texture;
-	}
+    public Weapon getWeapon() {
+        return weapon;
+    }
 
-	public Weapon getWeapon() {
-		return weapon;
-	}
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
 
-	public void setWeapon(Weapon weapon) {
-		this.weapon = weapon;
-	}
+    public Armor getHeadArmor() {
+        return headArmor;
+    }
 
-	public Armor getHeadArmor() {
-		return headArmor;
-	}
+    public void setHeadArmor(Armor headArmor) {
+        this.headArmor = headArmor;
+    }
 
-	public void setHeadArmor(Armor headArmor) {
-		this.headArmor = headArmor;
-	}
+    public Armor getBodyArmor() {
+        return bodyArmor;
+    }
 
-	public Armor getBodyArmor() {
-		return bodyArmor;
-	}
+    public void setBodyArmor(Armor bodyArmor) {
+        this.bodyArmor = bodyArmor;
+    }
 
-	public void setBodyArmor(Armor bodyArmor) {
-		this.bodyArmor = bodyArmor;
-	}
+    public Armor getArmArmor() {
+        return armArmor;
+    }
 
-	public Armor getArmArmor() {
-		return armArmor;
-	}
+    public void setArmArmor(Armor armArmor) {
+        this.armArmor = armArmor;
+    }
 
-	public void setArmArmor(Armor armArmor) {
-		this.armArmor = armArmor;
-	}
+    public Armor getLegArmor() {
+        return legArmor;
+    }
 
-	public Armor getLegArmor() {
-		return legArmor;
-	}
+    public void setLegArmor(Armor legArmor) {
+        this.legArmor = legArmor;
+    }
 
-	public void setLegArmor(Armor legArmor) {
-		this.legArmor = legArmor;
-	}
+    public Armor getFootArmor() {
+        return footArmor;
+    }
 
-	public Armor getFootArmor() {
-		return footArmor;
-	}
+    public void setFootArmor(Armor footArmor) {
+        this.footArmor = footArmor;
+    }
 
-	public void setFootArmor(Armor footArmor) {
-		this.footArmor = footArmor;
-	}
+    public float getLifePoints() { return lifePoints; }
 
-	public float getLifePoints() {
-		return lifePoints;
-	}
-
-	public void setLifePoints(float lifePoints) {
-		this.lifePoints = lifePoints;
-	}
+    public void setLifePoints(float lifePoints) {
+        this.lifePoints = lifePoints;
+    }
 
 }

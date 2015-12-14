@@ -10,15 +10,18 @@ public class Player {
 
 	private ArrayList<Item> inventory;
 
-	private int id;
-
 	private String name;
 
     private double gold;
 
     private double exp;
 
-	public Player() {
+	public Player(String name, double gold, double exp) {
+
+		this.name = name;
+		this.gold = gold;
+		this.exp = exp;
+
 	}
 
 	public ArrayList<Item> getInventory() {
@@ -27,14 +30,6 @@ public class Player {
 
 	public void setInventory(ArrayList<Item> inventory) {
 		this.inventory = inventory;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {

@@ -2,8 +2,8 @@ package actor;
 
 public class Boss extends Actor {
 
-	public Boss(float lifePoints) {
-		super(lifePoints);
+	public Boss(String name, float lifePoints) {
+		super(name, lifePoints);
 	}
 
 }
