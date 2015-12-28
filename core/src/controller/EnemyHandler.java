@@ -11,14 +11,18 @@ public final class EnemyHandler {
 
     public static Enemy createNewEnemy(){
 
-        return new Enemy("EnemyName", 10000);
+        return new Enemy("EnemyName", 100000);
 
     }
 
     public static Texture createNewEnemyTexture(){
-
-        return new Texture("bear.png");
-
+        int r = (int)(Math.random() * 2) + 1;
+        if(r == 1){
+            return new Texture("zombieCow.png");
+        }
+        else{
+            return new Texture("bear.png");
+        }
     }
 
     public static void damageEnemy(Enemy enemy){

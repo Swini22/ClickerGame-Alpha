@@ -41,11 +41,13 @@ public class BattleRenderer {
 
 	private SpriteBatch batch;
 	private Texture enemyTexture;
+	private Texture goldTexture;
 	private Texture background;
 
 	private Rectangle enemyRectangle;
     private boolean enemyMovesUp;
 	private boolean dmgVisible;
+	private int dmgVisibilityCounter = 0;
     private float enemyAnimationTimeSpent = 0;
     private float dbUpdateTime = 0;
 
@@ -59,6 +61,8 @@ public class BattleRenderer {
         player = new Player("Mik", 0 ,0);
 
 		stage = new Stage();
+
+		goldTexture = new Texture("gold.png");
 
         //Input Processors
         InputProcessor userInput = new UserInputProcessor();
@@ -94,10 +98,10 @@ public class BattleRenderer {
         heroMenuButton.setSize(300, 200);
         heroMenuButton.setPosition(0, Gdx.graphics.getHeight() - heroMenuButton.getHeight());
         heroMenuButton.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                //TODO open Hero Menu
-            }
-        });
+			public void clicked(InputEvent event, float x, float y) {
+				//TODO open Hero Menu
+			}
+		});
         stage.addActor(heroMenuButton);
 
         inventoryMenuButton = new TextButton("Inventory", skin); // Use the initialized skin
@@ -142,7 +146,7 @@ public class BattleRenderer {
 
 	public void render(float delta) {
 
-        updateEnemy(delta);
+		updateEnemy(delta);
 
 		cam.update();
 
@@ -153,13 +157,23 @@ public class BattleRenderer {
 		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.draw(enemyTexture, enemyRectangle.getX(), enemyRectangle.getY(),
 				enemyRectangle.getWidth(), enemyRectangle.getHeight());
+		batch.draw(goldTexture, heroMenuButton.getX()+ heroMenuButton.getWidth()+50,
+				heroMenuButton.getX()+ Gdx.graphics.getHeight()-heroMenuButton.getHeight(),
+				Gdx.graphics.getWidth()/5 ,Gdx.graphics.getHeight()/10);
+		font.draw(batch, Double.toString(player.getGold()),heroMenuButton.getX()+heroMenuButton.getWidth()+goldTexture.getWidth()+50 , heroMenuButton.getX()+ Gdx.graphics.getHeight());
+
 		if (dmgVisible){
-			dmgVisible= false;
+			dmgVisibilityCounter+=1;
+			if (dmgVisibilityCounter > 5) {
+				dmgVisibilityCounter = 0;
+				dmgVisible = false;
+			}
 			batch.draw(chooseVisibleDMG(), enemyRectangle.getX(), enemyRectangle.getY(),
 					enemyRectangle.getWidth(), enemyRectangle.getHeight());
 		}
 
 		font.draw(batch, Float.toString(enemy.getLifePoints()), 100, 100);
+
 		batch.end();
 
 		stage.act(delta*30);
@@ -219,8 +233,7 @@ public class BattleRenderer {
 	}
 
 	public Texture chooseVisibleDMG() {
-		int r = (int)(Math.random() * 10) + 1;
-		Gdx.app.log("random", ""+r);
+		int r = (int)(Math.random() * 2) + 1;
 		if(r == 1){
 			return new Texture("visible_dmg_1.png");
 		}
@@ -304,6 +317,7 @@ public class BattleRenderer {
     private void createBasicSkin(){
         //Create a font
         BitmapFont font = new BitmapFont();
+		font.getData().setScale(3, 3);
         skin = new Skin();
         skin.add("default", font);
 
