@@ -16,7 +16,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -28,8 +27,8 @@ import java.awt.event.InputEvent;
 
 public class BattleRenderer {
 
-	public static final float ENEMY_HEIGHT = 600;
-	public static final float ENEMY_WIDTH = 600;
+	public static final float ENEMY_HEIGHT = Gdx.graphics.getHeight()/3;
+	public static final float ENEMY_WIDTH = ENEMY_HEIGHT; // all Enemys are perfect cubes
 
 	MyGdxGame game;
 
@@ -46,6 +45,7 @@ public class BattleRenderer {
 
 	private Rectangle enemyRectangle;
     private boolean enemyMovesUp;
+	private boolean dmgVisible;
     private float enemyAnimationTimeSpent = 0;
     private float dbUpdateTime = 0;
 
@@ -74,7 +74,7 @@ public class BattleRenderer {
 		cam = new OrthographicCamera(Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight());
 		cam.position.set(Gdx.graphics.getWidth() / 2,
-                Gdx.graphics.getHeight() / 2, 0);
+				Gdx.graphics.getHeight() / 2, 0);
 		cam.update();
 
         font = new BitmapFont();
@@ -150,14 +150,19 @@ public class BattleRenderer {
 		Gdx.gl.glClearColor(0, 1, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		batch.draw(background, 0, 0, Gdx.graphics.getHeight(),  Gdx.graphics.getWidth());
+		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.draw(enemyTexture, enemyRectangle.getX(), enemyRectangle.getY(),
 				enemyRectangle.getWidth(), enemyRectangle.getHeight());
+		if (dmgVisible){
+			dmgVisible= false;
+			batch.draw(chooseVisibleDMG(), enemyRectangle.getX(), enemyRectangle.getY(),
+					enemyRectangle.getWidth(), enemyRectangle.getHeight());
+		}
 
 		font.draw(batch, Float.toString(enemy.getLifePoints()), 100, 100);
 		batch.end();
 
-		stage.act();
+		stage.act(delta*30);
 		stage.draw();
 	}
 
@@ -209,8 +214,20 @@ public class BattleRenderer {
         enemyRectangle = new Rectangle();
         enemyRectangle.setSize(ENEMY_WIDTH, ENEMY_HEIGHT);
         enemyRectangle.setPosition(
-                Gdx.graphics.getWidth() / 2 - enemyRectangle.getWidth() / 2,
-                Gdx.graphics.getHeight() / 2 - enemyRectangle.getHeight() / 2);
+				Gdx.graphics.getWidth() / 2 - enemyRectangle.getWidth() / 2,
+				Gdx.graphics.getHeight() / 2 - enemyRectangle.getHeight() / 2);
+	}
+
+	public Texture chooseVisibleDMG() {
+		int r = (int)(Math.random() * 10) + 1;
+		Gdx.app.log("random", ""+r);
+		if(r == 1){
+			return new Texture("visible_dmg_1.png");
+		}
+		else{
+			return new Texture("visible_dmg_2.png");
+		}
+
 
 	}
 
@@ -223,7 +240,7 @@ public class BattleRenderer {
 	public void enemyClicked() {
 
 		damageEnemy();
-
+		dmgVisible= true;
 	}
 
 	public class UserInputProcessor implements InputProcessor {
