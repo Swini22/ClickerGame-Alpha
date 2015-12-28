@@ -44,11 +44,11 @@ public class SplashScreen implements Screen {
 	@Override
 	public void render(float delta) {
 
-		//timepassed += delta;
+		timepassed += delta;
 
-		//if(timepassed > 1000){
+		if(timepassed > 3){
 			game.setScreen(battleScreen);
-		/**} else {
+		} else {
 
 			cam.update();
 
@@ -60,7 +60,7 @@ public class SplashScreen implements Screen {
 
 			batch.end();
 
-		}**/
+		}
 
 
 	}
