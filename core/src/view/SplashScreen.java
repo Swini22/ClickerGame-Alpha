@@ -14,7 +14,6 @@ import controller.BattleRenderer;
 public class SplashScreen implements Screen {
 
 	MyGdxGame game;
-	BattleScreen battleScreen;
 
 	private OrthographicCamera cam;
 	private SpriteBatch batch;
@@ -25,7 +24,6 @@ public class SplashScreen implements Screen {
 
 	public SplashScreen(MyGdxGame game) {
 		this.game = game;
-		battleScreen = new BattleScreen(game);
 
 		batch = new SpriteBatch();
 
@@ -47,7 +45,7 @@ public class SplashScreen implements Screen {
 		timepassed += delta;
 
 		if(timepassed > 3){
-			game.setScreen(battleScreen);
+			game.setScreen(game.battleScreen);
 		} else {
 
 			cam.update();
