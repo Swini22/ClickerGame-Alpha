@@ -8,13 +8,24 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import javax.swing.text.html.Option;
+
 import actor.Player;
+import view.AllyScreen;
 import view.BattleScreen;
+import view.HeroScreen;
+import view.InventoryScreen;
+import view.OptionScreen;
 import view.SplashScreen;
 
 public class MyGdxGame extends Game {
 
-	public SplashScreen splashScreen;
+	public final SplashScreen splashScreen;
+	public final BattleScreen battleScreen;
+    public final AllyScreen allyScreen;
+    public final InventoryScreen inventoryScreen;
+    public final HeroScreen heroScreen;
+    public final OptionScreen optionScreen;
 
 	private OrthographicCamera camera;
 
@@ -22,11 +33,16 @@ public class MyGdxGame extends Game {
 
 	public MyGdxGame(Player player){
 		super();
+        splashScreen = new SplashScreen(this);
+        battleScreen = new BattleScreen(this);
+        allyScreen = new AllyScreen(this);
+        inventoryScreen = new InventoryScreen(this);
+        heroScreen = new HeroScreen(this);
+        optionScreen = new OptionScreen(this);
 	}
 
 	@Override
 	public void create() {
-		splashScreen = new SplashScreen(this);
 		setScreen(splashScreen);
 	}
 

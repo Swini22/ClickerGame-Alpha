@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -58,7 +59,7 @@ public class BattleRenderer {
 
 	public BattleRenderer(MyGdxGame game) {
 
-        player = new Player("Mik", 0 ,0);
+        player = new Player("Player", 0 ,0);
 
 		stage = new Stage();
 
@@ -98,41 +99,57 @@ public class BattleRenderer {
         heroMenuButton.setSize(300, 200);
         heroMenuButton.setPosition(0, Gdx.graphics.getHeight() - heroMenuButton.getHeight());
         heroMenuButton.addListener(new ClickListener() {
-			public void clicked(InputEvent event, float x, float y) {
-				//TODO open Hero Menu
-			}
-		});
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(game.heroScreen);
+            }
+        });
         stage.addActor(heroMenuButton);
 
         inventoryMenuButton = new TextButton("Inventory", skin); // Use the initialized skin
         inventoryMenuButton.setSize(300, 200);
         inventoryMenuButton.setPosition(0, Gdx.graphics.getHeight() - inventoryMenuButton.getHeight() * 2);
         inventoryMenuButton.addListener(new ClickListener() {
-			public void clicked(InputEvent event, float x, float y) {
-				//TODO open Hero Menu
-			}
-		});
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(game.inventoryScreen);
+            }
+        });
         stage.addActor(inventoryMenuButton);
 
         resetMenuButton = new TextButton("Reset", skin); // Use the initialized skin
         resetMenuButton.setSize(300, 200);
         resetMenuButton.setPosition(0, Gdx.graphics.getHeight() - resetMenuButton.getHeight() * 3);
         resetMenuButton.addListener(new ClickListener() {
-			public void clicked(InputEvent event, float x, float y) {
-				//TODO open Hero Menu
-			}
-		});
+            public void clicked(InputEvent event, float x, float y) {
+                //TODO open Hero Menu
+            }
+        });
         stage.addActor(resetMenuButton);
 
         optionsMenuButton = new TextButton("Options", skin); // Use the initialized skin
         optionsMenuButton.setSize(300, 200);
         optionsMenuButton.setPosition(0, Gdx.graphics.getHeight() - optionsMenuButton.getHeight() * 4);
         optionsMenuButton.addListener(new ClickListener() {
-			public void clicked(InputEvent event, float x, float y) {
-				//TODO open Hero Menu
-			}
-		});
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(game.optionScreen);
+            }
+        });
         stage.addActor(optionsMenuButton);
+
+        createMenuButton("asdf", game.optionScreen, 5);
+
+    }
+
+    public void createMenuButton(String title, final Screen screen, int number){
+
+        TextButton button = new TextButton(title, skin); // Use the initialized skin
+        button.setSize(300, 200);
+        button.setPosition(0, Gdx.graphics.getHeight() - button.getHeight() * number);
+        button.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(screen);
+            }
+        });
+        stage.addActor(button);
 
     }
 
