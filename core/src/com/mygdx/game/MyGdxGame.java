@@ -31,7 +31,7 @@ public class MyGdxGame extends Game {
 
     private Player player;
 
-	public MyGdxGame(Player player){
+	public MyGdxGame(){
 		super();
 	}
 
@@ -48,7 +48,6 @@ public class MyGdxGame extends Game {
 		setScreen(splashScreen);
 
 	}
-
 
     public Player getPlayer() {
         return player;

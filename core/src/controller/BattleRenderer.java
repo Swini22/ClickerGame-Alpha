@@ -2,6 +2,7 @@ package controller;
 
 import actor.Enemy;
 import actor.Player;
+import controller.battle.HealthBar;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -54,6 +55,8 @@ public class BattleRenderer {
 
 	TextButton inventoryMenuButton, heroMenuButton, resetMenuButton, optionsMenuButton;
 
+	HealthBar healthBar;
+
 	BitmapFont font;
 	Skin skin;
 
@@ -79,13 +82,20 @@ public class BattleRenderer {
 		cam = new OrthographicCamera(Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight());
 		cam.position.set(Gdx.graphics.getWidth() / 2,
-				Gdx.graphics.getHeight() / 2, 0);
+                Gdx.graphics.getHeight() / 2, 0);
 		cam.update();
 
         font = new BitmapFont();
 
         createBasicSkin();
         createMenu();
+
+		background = new Texture("bg_forest.jpg");
+
+		healthBar = new HealthBar();
+        healthBar.setSize(Gdx.graphics.getWidth() / 3, Gdx.graphics.getHeight() / 40);
+        healthBar.setPosition((Gdx.graphics.getWidth() / 2) - (healthBar.getWidth() / 2), (Gdx.graphics.getHeight() / 10) * 7);
+        stage.addActor(healthBar);
 
         initBattleScreen();
 
@@ -135,27 +145,10 @@ public class BattleRenderer {
         });
         stage.addActor(optionsMenuButton);
 
-        createMenuButton("asdf", game.optionScreen, 5);
-
-    }
-
-    public void createMenuButton(String title, final Screen screen, int number){
-
-        TextButton button = new TextButton(title, skin); // Use the initialized skin
-        button.setSize(300, 200);
-        button.setPosition(0, Gdx.graphics.getHeight() - button.getHeight() * number);
-        button.addListener(new ClickListener() {
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(screen);
-            }
-        });
-        stage.addActor(button);
-
     }
 
 	public void initBattleScreen() {
 
-		background = new Texture("bg_forest.jpg");
 
 		createNewEnemy();
 
@@ -164,6 +157,8 @@ public class BattleRenderer {
 	public void render(float delta) {
 
 		updateEnemy(delta);
+
+        healthBar.setHealth(enemy.getLifePoints(), enemy.getMaxLifePoints());
 
 		cam.update();
 
