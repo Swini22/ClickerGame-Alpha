@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.Texture;
 public class Actor {
 
     private String name;
+
+
+    private float maxLifePoints;
     private float lifePoints;
 
     private Weapon weapon;
@@ -23,6 +26,7 @@ public class Actor {
 
     public Actor(String name, float lifePoints) {
         this.name = name;
+        this.maxLifePoints = lifePoints;
         this.lifePoints = lifePoints; }
 
     public Weapon getWeapon() {
@@ -77,6 +81,14 @@ public class Actor {
 
     public void setLifePoints(float lifePoints) {
         this.lifePoints = lifePoints;
+    }
+
+    public float getMaxLifePoints() {
+        return maxLifePoints;
+    }
+
+    public void setMaxLifePoints(float maxLifePoints) {
+        this.maxLifePoints = maxLifePoints;
     }
 
 }

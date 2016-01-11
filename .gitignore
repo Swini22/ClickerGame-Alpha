@@ -44,3 +44,4 @@ proguard/
 *.iml
 
 .idea/libraries/gdx_1_7_1.xml
+.idea/workspace.xml

@@ -25,8 +25,10 @@ public final class EnemyHandler {
         }
     }
 
-    public static void damageEnemy(Enemy enemy){
-        enemy.setLifePoints(enemy.getLifePoints() - 5000);
+    public static float damageEnemy(Enemy enemy){
+        float damage = 5000;
+        enemy.setLifePoints(enemy.getLifePoints() - damage);
+        return damage;
     }
 
     public static double calculateWinExp(){
