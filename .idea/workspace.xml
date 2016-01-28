@@ -6,43 +6,43 @@
   <component name="ChangeListManager">
     <list default="true" id="2075a4da-86d2-421b-b4c2-24a971177159" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gwt_user_2_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_box2d_1_7_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\lwjgl_platform_2_9_2_natives_linux.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_box2d_platform_1_7_1_natives_desktop.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\lwjgl_platform_2_9_2_natives_windows.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jlayer_1_0_1_gdx.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\robovm_rt_1_9_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jinput_platform_2_0_5_natives_linux.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gwt_servlet_2_6_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_box2d_1_7_1_sources.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_1_7_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\robovm_cocoatouch_1_9_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\lwjgl_2_9_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jinput_platform_2_0_5_natives_osx.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\json_20090211.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_platform_1_7_1_natives_desktop.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_backend_robovm_1_7_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_box2d_platform_1_7_1_natives_ios.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_platform_1_7_1_natives_ios.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\robovm_objc_1_9_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jutils_1_0_0.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_backend_android_1_7_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jinput_platform_2_0_5_natives_windows.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_1_7_1_sources.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_box2d_gwt_1_7_1_sources.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\lwjgl_platform_2_9_2_natives_osx.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_backend_gwt_1_7_1_sources.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jinput_2_0_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\validation_api_1_0_0_GA.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jorbis_0_0_17.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_backend_lwjgl_1_7_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\validation_api_1_0_0_GA_sources.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_backend_gwt_1_7_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\lwjgl_2_9_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\validation_api_1_0_0_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jlayer_1_0_1_gdx.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\robovm_cocoatouch_1_9_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_backend_robovm_1_7_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jutils_1_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\lwjgl_platform_2_9_2_natives_linux.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_platform_1_7_1_natives_ios.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_1_7_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jinput_platform_2_0_5_natives_windows.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_backend_lwjgl_1_7_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\robovm_objc_1_9_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_box2d_platform_1_7_1_natives_ios.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jorbis_0_0_17.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\validation_api_1_0_0_GA_sources.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\lwjgl_platform_2_9_2_natives_windows.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gwt_servlet_2_6_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_platform_1_7_1_natives_desktop.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_box2d_1_7_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\json_20090211.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_box2d_platform_1_7_1_natives_desktop.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jinput_platform_2_0_5_natives_osx.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\jinput_platform_2_0_5_natives_linux.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_box2d_gwt_1_7_1_sources.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\robovm_rt_1_9_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_1_7_1_sources.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\lwjgl_util_2_9_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\lwjgl_platform_2_9_2_natives_osx.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="C:\Users\azizzari\workspace\ClickerGame-Alpha\.idea\libraries\gdx_box2d_1_7_1_sources.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/controller/BattleRenderer.java" afterPath="$PROJECT_DIR$/core/src/controller/BattleRenderer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/core.iml" afterPath="$PROJECT_DIR$/core/core.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/android.iml" afterPath="$PROJECT_DIR$/android/android.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/controller/BattleRenderer.java" afterPath="$PROJECT_DIR$/core/src/controller/BattleRenderer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ClickerGame-Alpha.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,8 +73,8 @@
       <file leaf-file-name="MyGdxGame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/MyGdxGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4650456">
-              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.14634146">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -3224,8 +3224,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="161" />
-    <option name="width" value="2343" />
-    <option name="height" value="1392" />
+    <option name="width" value="1942" />
+    <option name="height" value="1102" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -3250,6 +3250,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -3258,12 +3261,23 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClickerGame-Alpha" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.NonAndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3273,7 +3287,7 @@
     <property name="recentsLimit" value="5" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="89e2b271" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_23_x86" />
     <property name="FullScreen" value="false" />
   </component>
@@ -3483,7 +3497,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="161" y="0" width="2343" height="1392" extended-state="0" />
+    <frame x="161" y="0" width="1942" height="1102" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -3493,14 +3507,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42607972" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42560175" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19025522" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1892779" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11756935" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1171123" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3533,6 +3547,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/MyGdxGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/MyGdxGame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3579,9 +3601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3763,9 +3782,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3797,8 +3813,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/MyGdxGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4650456">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.14634146">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
