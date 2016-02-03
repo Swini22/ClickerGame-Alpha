@@ -53,6 +53,7 @@ public class BattleRenderer {
 	private Texture background;
 
     private Label enemyHealthLabel;
+	private Label moneyLabel;
 
 	private Rectangle enemyRectangle;
     private boolean enemyMovesUp;
@@ -90,7 +91,7 @@ public class BattleRenderer {
 		cam = new OrthographicCamera(Gdx.graphics.getWidth(),
 				Gdx.graphics.getHeight());
 		cam.position.set(Gdx.graphics.getWidth() / 2,
-                Gdx.graphics.getHeight() / 2, 0);
+				Gdx.graphics.getHeight() / 2, 0);
 		cam.update();
 
         font = new BitmapFont();
@@ -113,6 +114,9 @@ public class BattleRenderer {
         enemyHealthLabel.setPosition((Gdx.graphics.getWidth() / 2) - (enemyHealthLabel.getWidth() / 2), (Gdx.graphics.getHeight() / 10) * 8);
         stage.addActor(enemyHealthLabel);
 
+		moneyLabel = new Label(String.valueOf(player.getGold()), skin);
+		moneyLabel.setPosition(Gdx.graphics.getWidth() - moneyLabel.getWidth(), heroMenuButton.getY() + heroMenuButton.getHeight() / 3);
+		stage.addActor(moneyLabel);
 	}
 
     private void createMenu(){
@@ -162,6 +166,7 @@ public class BattleRenderer {
 	public void initBattleScreen() {
 
 
+
 		createNewEnemy();
 
 	}
@@ -170,7 +175,7 @@ public class BattleRenderer {
 
 		updateEnemy(delta);
 
-        enemyHealthLabel.setText(String.valueOf(enemy.getLifePoints()));
+		enemyHealthLabel.setText(String.valueOf(enemy.getLifePoints()));
         healthBar.setHealth(enemy.getLifePoints(), enemy.getMaxLifePoints());
 
 		cam.update();
@@ -182,18 +187,19 @@ public class BattleRenderer {
 		batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch.draw(enemyTexture, enemyRectangle.getX(), enemyRectangle.getY(),
 				enemyRectangle.getWidth(), enemyRectangle.getHeight());
-		batch.draw(goldTexture, heroMenuButton.getX()+ heroMenuButton.getWidth()+50,
-				heroMenuButton.getX()+ Gdx.graphics.getHeight()-heroMenuButton.getHeight(),
-				Gdx.graphics.getWidth()/5 ,Gdx.graphics.getHeight()/10);
-		font.draw(batch, Double.toString(player.getGold()),heroMenuButton.getX()+heroMenuButton.getWidth()+goldTexture.getWidth()+50 , heroMenuButton.getX()+ Gdx.graphics.getHeight());
+		batch.draw(goldTexture, heroMenuButton.getX() + heroMenuButton.getWidth() + 50,
+				heroMenuButton.getX() + Gdx.graphics.getHeight() - heroMenuButton.getHeight(),
+				Gdx.graphics.getWidth() / 5, Gdx.graphics.getHeight() / 10);
 
+		Texture texture = null;
 		if (dmgVisible){
 			dmgVisibilityCounter+=1;
 			if (dmgVisibilityCounter > 5) {
 				dmgVisibilityCounter = 0;
 				dmgVisible = false;
 			}
-			batch.draw(chooseVisibleDMG(), enemyRectangle.getX(), enemyRectangle.getY(),
+			texture = new Texture(chooseVisibleDMG());
+			batch.draw(texture, enemyRectangle.getX(), enemyRectangle.getY(),
 					enemyRectangle.getWidth(), enemyRectangle.getHeight());
 		}
 
@@ -201,8 +207,12 @@ public class BattleRenderer {
 
 		batch.end();
 
-		stage.act(delta*30);
+		stage.act(delta * 30);
 		stage.draw();
+
+		if (texture != null) {
+			texture.dispose();
+		}
 	}
 
     private void updateEnemy(float delta){
@@ -241,7 +251,10 @@ public class BattleRenderer {
 
         BattleHandler.calcEnemyDeathReward(player, enemy);
 
-        createNewEnemy();
+		enemyTexture.dispose();
+		moneyLabel.setText(String.valueOf(player.getGold()));
+		moneyLabel.setPosition(Gdx.graphics.getWidth()/3 *2, heroMenuButton.getY() + heroMenuButton.getHeight() / 3);
+		createNewEnemy();
 
     }
 
@@ -257,13 +270,13 @@ public class BattleRenderer {
                 Gdx.graphics.getHeight() / 2 - enemyRectangle.getHeight() / 2);
 	}
 
-	public Texture chooseVisibleDMG() {
+	public String chooseVisibleDMG() {
 		int r = (int)(Math.random() * 2) + 1;
 		if(r == 1){
-			return new Texture("visible_dmg_1.png");
+			return "visible_dmg_1.png";
 		}
 		else{
-			return new Texture("visible_dmg_2.png");
+			return "visible_dmg_2.png";
 		}
 
 
@@ -295,8 +308,12 @@ public class BattleRenderer {
         float maxY = Gdx.graphics.getHeight() / 2;
         float maxX = Gdx.graphics.getWidth() / 2;
 
+		System.out.println(rand.nextFloat());
+		System.out.println(Gdx.graphics.getHeight()/2);
+		System.out.println(Gdx.graphics.getHeight() / 2 * rand.nextFloat());
+
         MoveToAction action = Actions.action(MoveToAction.class);
-        action.setPosition(rand.nextFloat() * (maxX - 0) + 0, rand.nextFloat() * (maxY - 0) + 0);
+        action.setPosition(rand.nextFloat() * (maxX + 1), rand.nextFloat() * (maxY + 1));
         action.setDuration(100f);
         action.setInterpolation(Interpolation.bounceOut);
         actor.addAction(action);
@@ -304,8 +321,9 @@ public class BattleRenderer {
 
     public void createFadingActor(Actor actor){
 
-        SequenceAction action = Actions.sequence(Actions.alpha(1), Actions.fadeOut(100f));
+        SequenceAction action = Actions.sequence(Actions.alpha(1), Actions.fadeOut(100f), Actions.removeActor());
         actor.addAction(action);
+
     }
 
 	public class UserInputProcessor implements InputProcessor {
